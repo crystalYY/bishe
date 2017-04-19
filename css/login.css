@@ -1,0 +1,58 @@
+.error{color:#FF2308;}
+.container-fluid{
+	min-height: 638px;
+	background: url(../img/bg.jpg) top center no-repeat;
+	background-size: cover;
+}
+.mainContent{
+	height: 300px;
+	margin-top: 200px;
+}
+.mainContent .shopName{
+	padding: 120px 50px;
+	border-right:1px solid #fff;
+}
+.mainContent .shopName h2{
+	font-family: 'Microsoft YaHei';
+	color:#fff;
+}
+.mainContent .shopName h4{
+	font-family: Georgia;
+	color: #fff;
+}
+.mainContent .loginBox{
+	margin-top: 40px;
+	margin-left: 50px;
+}
+.mainContent .loginBox form{
+	font-family: 'KaiTi';
+	color: #EDF7F2;
+	font-size: 18px;
+}
+.mainContent .loginBox form input{
+	height: 40px;
+}
+.mainContent .loginBox form button{
+	margin-top: 30px;
+	height: 40px;
+	font-size: 18px;
+}
+@media(max-width: 767px){
+	.mainContent{
+		margin-top: 100px;
+	}
+	.mainContent .shopName{
+		padding:20px 0px;
+		border-right:none;
+	}
+	.mainContent .shopName h2{
+		text-align: center;
+	}
+	.mainContent .shopName h4{
+		text-align: center;
+	}
+	.mainContent .loginBox{
+		margin-top: 20px;
+		margin-left: 0px;
+	}
+}
