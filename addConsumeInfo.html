@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>理发店信息管理系统</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">;
+		/*newConsume*/
+		.newConsume{
+			margin-bottom: 20px;
+		}
+		.newConsume h3{
+			padding: 10px 0px;
+			background-color: #3E606F;
+			border-radius: 10px;
+			color:#FCFFF5;
+		}
+		.newConsume h4{
+			font-weight: bold;
+			padding: 15px;
+			border-bottom: 1px solid #ccc;
+		}
+		.newConsume h5{
+			font-weight: bold;
+			padding-top: 10px;
+		}
+		.newConsume .choicedProductDiv{
+			height: 200px;
+			overflow-y: auto;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			padding: 10px;
+		}
+		.newConsume .choicedProductDiv ol li{
+			padding: 6px;
+			cursor: pointer;
+		}
+		.newConsume .choicedProductDiv ol li:hover{
+			background-color: #BEEB9F;
+		}
+		#addProduct{
+			margin:10px;
+		}
+		.totalPrice{
+			margin-top: 10px;
+		}
+		#clearProduct{
+			font-size: 14px;
+			margin-left: 10px;
+			font-weight: normal;
+			cursor: pointer;
+			color: #3498DB;
+		}
+		#clearProduct:hover{
+			text-decoration: underline;
+		}
+		#addProduct{
+			margin-top: 10px;
+		}
+		#productError{
+			padding: 10px;
+		}
+	@media(max-width: 767px){
+		.header h2{
+			text-align: center;
+			padding: 5px 0px;
+		}
+	}
+		
+	</style>
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<!--header-->
+		<div class="row header">
+			<div class="col-xs-12 col-sm-10">
+				<h2 class="text-left"><a href="managerIndex.html">理发店信息管理系统</a></h2>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<h2 class="text-center">
+					<div class="row">
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-off" aria-hidden="true" title="退出"></span>
+						</div>
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true" title="注销"></span>
+						</div>
+					</div>
+					
+					
+				</h2>	
+			</div>			
+		</div>
+		<!--header end-->
+
+		<!--nav-->
+		<div class="row mainContent">
+			<div class="col-xs-12 col-sm-3 col-md-2 mainNav">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 portrait">
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+								<p id="portrait"><img src="img/touxiang.jpg" alt="用户头像" class="img-circle img-responsive"></p>
+							</div>
+						</div>	
+						<p class="text-center"><span id="managerName">神经饼</span><span id="managerPositon">前台</span></p>										
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center"><a href="managerIndex.html"><span class="glyphicon glyphicon-home"></span> 主页 </a></p>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-usd"></span> 消费管理 <span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="consumeInfo.html">消费信息</a></p>
+							<p class="text-center"><a href="addConsumeInfo.html">添加新消费</a></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-star"></span> 会员管理<span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="vipInfo.html">会员信息</a></p>
+							<p class="text-center"><a href="modifyVipInfo.html">修改会员信息</a></p>
+							<p class="text-center"><a href="addVip.html">添加新会员</a></p>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!--nav end-->	
+
+			<!--addNewConsume-->
+			<div class="newConsume col-xs-12 col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-1">
+				<h3 class="text-center">添加新消费</h3>
+				<h4>请填写消费基本信息</h4>
+				<form action="#" method="post" autocomplete="on">
+					<div class="form-group">
+						<label for="vipID">会员ID</label>
+						<input type="text" id="vipID" name="vipID" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="waiterID">服务员ID</label>
+						<input type="text" id="waiterID" name="waiterID" class="form-control">
+					</div>
+				</form>
+				<h4>请选择服务产品信息</h4>
+				<form action="#" method="post" autocomplete="on" id="product">
+					<h5>选择所需的服务产品</h5>
+					<select class="form-control" id="productInfo" multiple="multiple">
+					    <option>洗头</option>
+						<option>理发</option>	
+						<option>染发1</option>
+						<option>染发2</option>
+						<option>软化1</option>
+						<option>软化2</option>
+						<option>拉直1</option>
+						<option>拉直2</option>
+						<option>烫发1</option>
+						<option>烫发2</option>
+						<option>染烫套餐1</option>
+						<option>烫染套餐2</option>
+						<option>施华蔻洗发水</option>
+						<option>施华蔻发膜</option>
+						<option>滋源洗发水</option>
+						<option>滋源护发素</option>
+					</select>
+					<h5>选择服务产品数量</h5>
+					<select class="form-control" id="productQuantity" multiple="multiple">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option>11</option>
+						<option>12</option>
+					</select>
+					<span id="productError" class="text-center"></span><br>
+					<button type="button" class="btn btn-default" id="addProduct">添加</button>
+				
+					<h4>已选择的服务(点击删除)<span id="clearProduct">清空已选产品</span>	</h4>
+					<div class="choicedProductDiv">
+						<ol id="choicedProduct">
+						</ol>
+					</div>
+					<p class="text-center totalPrice">总价：<span id="totalPrice">200</span></p>
+					<button type="submit" class="btn btn-block btn-primary">提交</button>
+				</form>
+			</div>
+			<!--addNewConsume end-->	
+		</div>		
+	</div>
+
+	<!--script-->
+	<script src='js/jquery.min.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//nav
+			$('.navShowP').click(function(){
+				$(this).closest('div').find('.showDetail').slideToggle();
+			});
+
+			//mainContent
+			//点击删除
+			$('#choicedProduct').on('click','li',function(){
+				$(this).remove();
+			});
+			//点击清空
+			$('#clearProduct').click(function(){
+				$('#choicedProduct').empty();
+
+			})
+			//点击添加已选产品
+			$('#addProduct').click(function(e){
+
+				var productQuantity=$('#productQuantity').find('option:selected').text();
+				var productInfo=$('#productInfo').find('option:selected').text();
+				if(productQuantity&&productInfo){
+					e.preventDefault();
+					var oli='<li>产品名称:'+productInfo+'，数量:  '+productQuantity+'</li>';
+					$('#choicedProduct').append(oli);
+				}else if(!productQuantity){
+					e.preventDefault();
+					$('#productError').text('请选择产品数量').css('color','red');
+				}else if(!productInfo){
+					e.preventDefault();
+					$('#productError').text('请选择所需产品').css('color','red');
+				}else{
+					console.log('error');
+				}
+			});
+			$('#product').on('click','option',function(){
+				$('#productError').text('');
+			})
+		});
+	</script>
+</body>
+</html>

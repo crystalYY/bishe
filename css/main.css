@@ -1,0 +1,64 @@
+
+/*header*/
+.header{
+	background-color: #193441;
+}
+.header h2{
+	color: #FCFFF5;
+	padding: 20px 0px;
+}
+.header h2 a{
+	color: #FCFFF5;
+	text-decoration: none;
+}
+.header h2 span{
+	cursor: pointer;
+}
+
+/*nav*/
+.container-fluid .mainContent+.col-xs-12,.col-sm-2{
+	padding-left: 0px;
+}
+.mainContent .portrait{
+	background-color: #3E606F;
+}
+.mainContent .portrait .row{
+	margin-top: 10px;
+}
+.mainContent .portrait p span{
+	padding-right: 5px;
+	color: #FCFFF5;
+}
+.mainContent .navShow{
+	background-color: #91AA9D;
+	padding: 0px;
+}
+.mainContent .navShow .showDetail{
+	background-color: #D1DBBD;
+	display: none;
+}
+.mainContent .navShow p{
+	font-size: 14px;
+	color: #193441;
+	padding: 12px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+.mainContent .navShow p:hover{
+	background-color: #ACCFCC;
+}
+.mainContent .navShow p .glyphicon{
+	padding:0px 5px;
+}
+.mainContent .navShow p a{
+	color: #193441;
+	text-decoration: none;
+	display: block;
+}
+
+@media(max-width: 767px){
+	.header h2{
+		text-align: center;
+		padding: 5px 0px;
+	}
+}

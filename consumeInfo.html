@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>理发店信息管理系统</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/default.date.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">;
+		/*consumeInfo*/
+		.consumeInfo{
+			margin-bottom: 20px;
+		}
+		.consumeInfo h3{
+			padding: 10px 0px;
+			background-color: #3E606F;
+			border-radius: 10px;
+			color:#FCFFF5;
+		}
+		.calendarRow .form-inline{
+			margin-left: 10%;
+		}
+		.calendarRow .choice{
+			font-weight: bold;	
+		}
+		#searchBox{
+			margin: 20px 0px;
+		}
+		.showInfo{
+			margin-top: 20px;
+			display: none;
+		}
+	@media(max-width: 767px){
+		.header h2{
+			text-align: center;
+			padding: 5px 0px;
+		}
+	}
+		
+	</style>
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<!--header-->
+		<div class="row header">
+			<div class="col-xs-12 col-sm-10">
+				<h2 class="text-left"><a href="managerIndex.html">理发店信息管理系统</a></h2>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<h2 class="text-center">
+					<div class="row">
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-off" aria-hidden="true" title="退出"></span>
+						</div>
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true" title="注销"></span>
+						</div>
+					</div>
+					
+					
+				</h2>	
+			</div>			
+		</div>
+		<!--header end-->
+
+		<!--nav-->
+		<div class="row mainContent">
+			<div class="col-xs-12 col-sm-3 col-md-2 mainNav">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 portrait">
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+								<p id="portrait"><img src="img/touxiang.jpg" alt="用户头像" class="img-circle img-responsive"></p>
+							</div>
+						</div>	
+						<p class="text-center"><span id="managerName">神经饼</span><span id="managerPositon">前台</span></p>										
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center"><a href="managerIndex.html"><span class="glyphicon glyphicon-home"></span> 主页 </a></p>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-usd"></span> 消费管理 <span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="consumeInfo.html">消费信息</a></p>
+							<p class="text-center"><a href="addConsumeInfo.html">添加新消费</a></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-star"></span> 会员管理<span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="vipInfo.html">会员信息</a></p>
+							<p class="text-center"><a href="modifyVipInfo.html">修改会员信息</a></p>
+							<p class="text-center"><a href="addVip.html">添加新会员</a></p>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!--nav end-->
+
+			<!--consumeInfo-->
+			<div class="col-xs-12 col-sm-7 col-md-8 col-sm-offset-1 consumeInfo">
+				<h3 class="text-center">消费信息</h3>
+				<div class="calendarRow row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<form action="#" method="post">
+							<div class="form-group">
+								<label for="startDate">开始日期</label>
+								<input type="text" class="datepicker form-control" id="startDate" name="startDate" placeholder="点击选择开始日期">
+							</div>
+							<div class="form-group">
+								<label for="endDate">结束日期</label>
+								<input type="text" class="datepicker form-control" id="endDate" name="endDate" placeholder="点击选择结束日期">
+							</div>
+							<span class="choice">筛选</span>
+							<select class="form-control">
+							  	<option>用户ID</option>
+								<option>服务员</option>
+								<option>姓名</option>
+							</select>
+							<input type="text" class="form-control" placeholder="search" id="searchBox">
+							<p id="errorInfo" class="text-center"></p>
+							<button type="submit" class="btn btn-primary btn-block" id="searchBtn">搜索</button>
+						</form>
+					</div>
+				</div>
+				<div class="showInfo" id="showInfoTable">
+					<table class="table table-responsive table-hover table-bordered table-striped">
+						<thead>
+							<tr class="success">
+								<th>#</th>
+								<th>类别</th>
+								<th>会员ID</th>
+								<th>姓名</th>
+								<th>服务产品</th>
+								<th>数量</th>
+								<th>总价</th>
+								<th>服务员ID</th>
+								<th>日期</th>
+							</tr>
+							
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>会员</td>
+								<td>1001</td>
+								<td>李四</td>
+								<td>洗头</td>
+								<td>1</td>
+								<td>15</td>
+								<td>3001</td>
+								<td>2017-4-24</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>会员</td>
+								<td>1001</td>
+								<td>李四</td>
+								<td>洗头</td>
+								<td>1</td>
+								<td>15</td>
+								<td>3001</td>
+								<td>2017-4-24</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="showOrdered clearfix pull-right">
+						<a href="javascript:;"><button id="beforePage" class="btn btn-success">上一页</button></a>
+						<a href="javascript:;"><button id="nextPage" class="btn btn-success">下一页</button></a>
+					</div>
+				</div>
+			</div>
+			<!--consumeInfo end-->
+		</div>		
+	</div>
+
+	<!--script-->
+	<script src='js/jquery.min.js'></script>
+	<script type="text/javascript" src="js/picker.js"></script>
+	<script type="text/javascript" src="js/picker.date.js"></script>
+	<script type="text/javascript" src="js/legacy.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//nav
+			$('.navShowP').click(function(){
+				$(this).closest('div').find('.showDetail').slideToggle();
+			});
+
+			//mainContent
+			$('.datepicker').pickadate({
+				formatSubmit: 'yyyy-mm-dd',//name:data_input
+				 hiddenName: true,
+				selectMonths:true,
+				selectYears:true,				
+				max:true
+			});
+
+			//showInfo
+			$('#searchBtn').click(function(e){
+				var startDateValue=document.forms[0].startDate[1].value;
+				var endDateValue=document.forms[0].endDate[1].value;
+				if(!startDateValue){
+					e.preventDefault();
+					$('#errorInfo').text('请选择开始查询的日期！').css('color','red');
+				}else if(!endDateValue){
+					e.preventDefault();
+					$('#errorInfo').text('请选择结束查询的日期！').css('color','red');
+				}else if(endDateValue<startDateValue){
+					e.preventDefault();
+					$('#errorInfo').text('开始查询的日期应小于结束查询的日期！').css('color','red');
+				}else{
+					e.preventDefault();//暂时阻止了表单默认提交的行为
+					$('#showInfoTable').show();
+				}
+			});
+		});
+	</script>
+</body>
+</html>

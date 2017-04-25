@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>理发店信息管理系统</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel='stylesheet' href='css/fullcalendar.min.css' />
+	<link rel="stylesheet" type="text/css" href="css/fancybox.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style type="text/css">
+		/*calendar*/
+		#calendar{
+			margin:40px 0px;
+		}
+		/*calendar end*/
+		
+	</style>
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<!--header-->
+		<div class="row header">
+			<div class="col-xs-12 col-sm-10">
+				<h2 class="text-left"><a href="managerIndex.html">理发店信息管理系统</a></h2>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<h2 class="text-center">
+					<div class="row">
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-off" aria-hidden="true" title="退出"></span>
+						</div>
+						<div class="col-xs-6">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true" title="注销"></span>
+						</div>
+					</div>
+					
+					
+				</h2>	
+			</div>			
+		</div>
+		<!--header end-->
+
+		<!--nav-->
+		<div class="row mainContent">
+			<div class="col-xs-12 col-sm-3 col-md-2 mainNav">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 portrait">
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+								<p id="portrait"><img src="img/touxiang.jpg" alt="用户头像" class="img-circle img-responsive"></p>
+							</div>
+						</div>	
+						<p class="text-center"><span id="managerName">神经饼</span><span id="managerPositon">前台</span></p>										
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center"><a href="managerIndex.html"><span class="glyphicon glyphicon-home"></span> 主页 </a></p>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-usd"></span> 消费管理 <span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="consumeInfo.html">消费信息</a></p>
+							<p class="text-center"><a href="addConsumeInfo.html">添加新消费</a></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 navShow">
+						<p class="text-center navShowP"><span class="glyphicon glyphicon-star"></span> 会员管理<span class="glyphicon glyphicon-chevron-down"></span></p>
+						<div class="showDetail">
+							<p class="text-center"><a href="vipInfo.html">会员信息</a></p>
+							<p class="text-center"><a href="modifyVipInfo.html">修改会员信息</a></p>
+							<p class="text-center"><a href="addVip.html">添加新会员</a></p>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!--nav end-->
+
+			<!--calendar-->
+			<div class="col-xs-12 col-sm-8 col-sm-offset-1 calendar">
+				<div id="calendar">
+					
+				</div>
+			</div>
+			<!--calendar end-->
+		</div>		
+	</div>
+	
+	<script src='js/moment.min.js'></script>
+	<script src='js/jquery.min.js'></script>
+	<script src='js/fullcalendar.js'></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.navShowP').click(function(){
+				$(this).closest('div').find('.showDetail').slideToggle();
+			});
+
+		    $('#calendar').fullCalendar({
+		        // put  options and callbacks here
+					header: {
+						left: 'prevYear,prev,next,nextYear,today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay,listMonth'
+					},
+					navLinks: true, // can click day/week names to navigate views
+					businessHours: true, // display business hours
+					editable: true,
+					timeFormat: 'H:mm',
+					selectable:true
+				});
+
+		});
+	</script>
+</body>
+</html>
